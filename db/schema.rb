@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207012711) do
+ActiveRecord::Schema.define(version: 20180207205909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20180207012711) do
     t.string "password_salt"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["token"], name: "index_users_on_token"
+  end
+
+  create_table "video_styles", force: :cascade do |t|
+    t.string "name"
+    t.string "video_comments_count"
+    t.string "video_likes_count"
+    t.string "video_shares_count"
+    t.string "video_url"
+    t.string "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "campaigns", "users"
