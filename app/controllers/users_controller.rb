@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  # skip require_login method only when we are creating a user.
+  skip_before_action :require_login, only: [:create], raise: false
 
   # GET /users
   def index
@@ -46,6 +48,12 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.permit(:name, :phone_number, :email, :business_name)
+      params.permit(
+        :name,
+        :phone_number,
+        :email,
+        :business_name,
+        :password
+      )
     end
 end
