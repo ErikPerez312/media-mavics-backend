@@ -1,0 +1,2 @@
+class Videostyle < ApplicationRecord
+end
