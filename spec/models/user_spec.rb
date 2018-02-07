@@ -7,7 +7,8 @@ RSpec.describe User, type: :model do
         name: "Name Test",
         email: "emailTest@test.com",
         business_name: "Business Name Test",
-        phone_number: "123-456-7890"
+        phone_number: "123-456-7890",
+        password: "1234"
       )
       expect(user).to be_valid
     end
@@ -17,7 +18,8 @@ RSpec.describe User, type: :model do
         name: nil,
         email: "emailTest@test.com",
         business_name: "Business Name Test",
-        phone_number: "123-456-7890"
+        phone_number: "123-456-7890",
+        password: "1234"
       )
       expect(bad_user).to_not be_valid
     end
@@ -27,7 +29,8 @@ RSpec.describe User, type: :model do
         name: "Name Test",
         email: nil,
         business_name: "Business Name Test",
-        phone_number: "123-456-7890"
+        phone_number: "123-456-7890",
+        password: "1234"
       )
       expect(bad_user).to_not be_valid
     end
@@ -37,7 +40,8 @@ RSpec.describe User, type: :model do
         name: "Name Test",
         email: "emailTest@test.com",
         business_name: nil,
-        phone_number: "123-456-7890"
+        phone_number: "123-456-7890",
+        password: "1234"
       )
       expect(bad_user).to_not be_valid
     end
@@ -47,9 +51,20 @@ RSpec.describe User, type: :model do
         name: "Name Test",
         email: "emailTest@test.com",
         business_name: "Business Name Test",
-        phone_number: nil
+        phone_number: nil,
+        password: "1234"
       )
       expect(bad_user).to_not be_valid
+    end
+
+    it "is invalid without a password" do
+      bad_user = User.new(
+        name: "Name Test",
+        email: "emailTest@test.com",
+        business_name: "Business Name Test",
+        phone_number: "123-456-7890",
+        password: nil
+      )
     end
   end
 
