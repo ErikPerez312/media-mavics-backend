@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207205909) do
+ActiveRecord::Schema.define(version: 20180207222632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(version: 20180207205909) do
     t.string "video_shares_count"
     t.string "video_url"
     t.string "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "videostyles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
