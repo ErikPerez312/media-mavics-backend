@@ -1,2 +1,0 @@
-class VideoStyle < ApplicationRecord
-end
