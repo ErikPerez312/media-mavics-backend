@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  # skip require_login method only when we are creating a user.
+  # skip require_login method only when we are creating a user.f
   skip_before_action :require_login, only: [:create], raise: false
 
   # GET /users
