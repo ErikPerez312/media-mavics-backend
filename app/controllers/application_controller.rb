@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   # Prevent rails from encoding ampersand
-  config.active_support.escape_html_entities_in_json = false
+  # config.active_support.escape_html_entities_in_json = false
 
   # 1. Import HttpAuthentication library from ActionController
   include ActionController::HttpAuthentication::Token::ControllerMethods
