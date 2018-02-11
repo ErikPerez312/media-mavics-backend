@@ -58,7 +58,8 @@ class CampaignsController < ApplicationController
         :video_link_url,
         :video_like_count,
         :video_comment_count,
-        :video_share_count
+        :video_share_count,
+        :qr_code_scan_count
       )
     end
 end
