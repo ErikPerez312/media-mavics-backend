@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base #API
   # Prevent rails from encoding ampersand
   # config.active_support.escape_html_entities_in_json = false
 
