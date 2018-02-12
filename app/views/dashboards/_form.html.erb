@@ -1,0 +1,21 @@
+<%= form_for(video_style) do |f|%>
+  <div class='field'>
+    <%=f.label :name%>
+    <%=f.text_field :name%>
+  </div>
+
+  <div class='field'>
+    <%=f.label :video_url%>
+    <%=f.text_field :video_url%>
+
+  </div>
+
+  <div class='field'>
+    <%=f.label :thumbnail_url%>
+    <%=f.text_field :thumbnail_url%>
+  </div>
+
+  <div>
+    <%=f.submit%>
+  </div>
+<% end%>
