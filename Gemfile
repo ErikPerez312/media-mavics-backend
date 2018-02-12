@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.4'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 # Postgres
 gem 'pg', '~> 0.18'
+# Used for adding user roles
+gem 'cancancan', '~> 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
