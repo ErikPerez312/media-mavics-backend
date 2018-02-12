@@ -1,6 +1,7 @@
 class VideoStylesController < ApplicationController
   before_action :set_video_style, only: [:show, :update, :destroy]
-  skip_before_action :require_login, only: [:create], raise: false
+
+  # skip_before_action :require_login, only: [:create], raise: false
 
   # GET /video_styles
   def index
