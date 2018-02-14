@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @users = User.all
 
     render json: @users
+    # email = request.headers['email']
+    # password = request.headers['password']
+    # @user = User.new(email, password)
+    # @user.authenticate()
   end
 
   # GET /users/1
