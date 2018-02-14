@@ -1,0 +1,34 @@
+<h1>New Video Style</h1>
+
+<div class="forms">
+
+  <!-- <form>
+    Video URL<br>
+    <input type="text" name="video url"><br>
+    <br>
+    Thumbnail URL<br>
+    <input type="text" name="thumbnail url"><br>
+    <br>
+    Style Name <br>
+    <input type="text" name="style name">
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+  </form> -->
+
+
+
+  <%= form_for @video_style, url: {action: "create"} do |f| %>
+    <%= f.label :thumbnail_url %>
+    <%= f.text_field :thumbnail_url %>
+    <br>
+    <%= f.label :video_url %>
+    <%= f.text_field :video_url %>
+    <br>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= submit_tag("Create") %>
+  <% end %>
+
+</div>

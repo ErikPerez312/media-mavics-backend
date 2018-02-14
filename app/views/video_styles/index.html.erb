@@ -1,0 +1,40 @@
+<center> <h1> Video Styles </h1> </center>
+
+<div class="">
+  <button type = "button" name = "New Style">
+    <%= link_to "Create Video Style", new_video_styles_path %>
+  </button>
+</div>
+
+<br>
+
+<div class="">
+
+  <table cellspacing = "20">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Video URL</th>
+        <th> Thumbnail URL
+        <th colspan="10"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @video_styles.each do |style| %>
+        <tr>
+          <td><%= style.name %></td>
+          <td><%= style.video_url %></td>
+          <td><%= style.thumbnail_url %></td>
+          <td>
+            <button type = "button" name = "New Style">
+              <%= link_to "Edit", edit_video_style_path(style.id) %>
+            </button>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

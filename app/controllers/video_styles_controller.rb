@@ -1,17 +1,31 @@
 class VideoStylesController < ApplicationController
   before_action :set_video_style, only: [:show, :update, :destroy]
-  skip_before_action :require_login, only: [:create], raise: false
+  skip_before_action :require_login
+  #, only: [:create], raise: false
 
   # GET /video_styles
   def index
     @video_styles = VideoStyle.all
 
-    render json: @video_styles
+    respond_to do |format|
+      format.html
+      format.json { render json: @video_styles, status: :ok }
+    end
+  end
+
+  def new
+    @video_style = VideoStyle.new
+    render template: "video_styles/new"
   end
 
   # GET /video_styles/1
   def show
-    render json: @video_style
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @video_style, status: :ok }
+    end
+    # render json: @video_style
   end
 
   # POST /video_styles
@@ -19,19 +33,36 @@ class VideoStylesController < ApplicationController
     @video_style = VideoStyle.new(video_style_params)
 
     if @video_style.save
-      render json: @video_style, status: :created, location: @video_style
+      respond_to do |format|
+        format.html
+        format.json { render json: @video_style, status: :created }
+      end
     else
-      render json: @video_style.errors, status: :unprocessable_entity
+      respond_to do |format|
+        format.html
+        format.json { render json: @video_style.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   # PATCH/PUT /video_styles/1
   def update
-    if @video_style.update(video_style_params)
-      render json: @video_style
-    else
-      render json: @video_style.errors, status: :unprocessable_entity
+    respond_to do |format|
+      if @video_style.update(video_style_params)
+        format.html #{ redirect_to @video_style, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
+
+    # if @video_style.update(video_style_params)
+    #   render json: @video_style
+    # else
+    #   render json: @video_style.errors, status: :unprocessable_entity
+    # end
   end
 
   # DELETE /video_styles/1
@@ -47,7 +78,7 @@ class VideoStylesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def video_style_params
-      params.permit(
+      params.require(:video_style).permit(
         :name,
         :video_comments_count,
         :video_likes_count,
