@@ -10,6 +10,9 @@ class DashboardsController < ApplicationController
     @video_styles = VideoStyle.all
   end
 
+  # def video_style
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
