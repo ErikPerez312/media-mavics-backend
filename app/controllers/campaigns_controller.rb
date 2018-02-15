@@ -1,31 +1,33 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :update, :destroy]
 
-  # GET /campaigns
+  # GET users/:user_id/campaigns
   def index
-    @campaigns = Campaign.all
+    # @campaigns = Campaign.all
+    @campaigns = Campaign.where(user_id: params[:user_id])
 
     render json: @campaigns
   end
 
-  # GET /campaigns/1
+  # GET users/:user_id/campaigns/:campaign_id
   def show
     render json: @campaign
   end
 
-  # POST /campaigns
+  # POST users/:user_id/campaigns
   def create
+    # byebug
     @campaign = Campaign.new(campaign_params)
     @campaign.user = current_user
 
     if @campaign.save
-      render json: @campaign, status: :created, location: @campaign
+      render json: @campaign, status: :created, location: user_campaign_path(id: @campaign.user.id)
     else
       render json: @campaign.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /campaigns/1
+  # PATCH/PUT users/:user_id/campaigns/:campaign_id
   def update
     if @campaign.update(campaign_params)
       render json: @campaign
@@ -34,7 +36,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-  # DELETE /campaigns/1
+  # DELETE users/:user_id/campaigns/:campaign_id
   def destroy
     @campaign.destroy
   end
@@ -42,6 +44,7 @@ class CampaignsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_campaign
+      byebug
       @campaign = Campaign.find(params[:id])
     end
 
@@ -59,7 +62,9 @@ class CampaignsController < ApplicationController
         :video_like_count,
         :video_comment_count,
         :video_share_count,
+        :user_id,
         :qr_code_scan_count
+        # :campaign
       )
     end
 end
