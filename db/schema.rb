@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211231009) do
+ActiveRecord::Schema.define(version: 20180215234149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180211231009) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "qr_code_scan_count"
+    t.string "selected_video_style"
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
