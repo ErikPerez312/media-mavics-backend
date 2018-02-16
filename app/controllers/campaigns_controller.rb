@@ -64,7 +64,7 @@ class CampaignsController < ApplicationController
         :user_id,
         :selected_video_style,
         :qr_code_scan_count
-        :campaign
+        # :campaign
       )
     end
 end
