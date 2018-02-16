@@ -8,6 +8,7 @@ class Campaign < ApplicationRecord
     :video_focus_people,
     :video_focus_product,
     :video_duration,
+    :selected_video_style,
     presence: true
 
 end
