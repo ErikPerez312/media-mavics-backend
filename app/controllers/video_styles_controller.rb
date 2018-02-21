@@ -54,7 +54,10 @@ class VideoStylesController < ApplicationController
         :video_likes_count,
         :video_shares_count,
         :video_url,
-        :thumbnail_url
+        :thumbnail_url,
+        :video_style,
+        :business_name,
+        :video_views
       )
     end
 end
