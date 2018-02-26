@@ -63,7 +63,8 @@ class CampaignsController < ApplicationController
         :video_share_count,
         :user_id,
         :selected_video_style,
-        :qr_code_scan_count
+        :qr_code_scan_count,
+        :video_thumbnail_url
         # :campaign
       )
     end
