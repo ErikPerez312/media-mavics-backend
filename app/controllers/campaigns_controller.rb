@@ -62,7 +62,8 @@ class CampaignsController < ApplicationController
         :video_comment_count,
         :video_share_count,
         :user_id,
-        :selected_video_style
+        :selected_video_style,
+        :video_thumbnail_url
         # :campaign
       )
     end

@@ -19,7 +19,7 @@ RSpec.describe VideoStyle, type: :model do
         name: nil,
         video_url: "www.testurlsss.com",
         thumbnail_url: "www.thumbnail_urltest.com",
-        business_name: "teset name",
+        business_name: "test name",
         video_style: "test style"
       )
       expect(bad_style).to_not be_valid
