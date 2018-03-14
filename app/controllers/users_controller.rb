@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
       create_stripe_customer(@user)
 
-      render json: @user, except: removed_response_params , status: :created, location: @user
+      render json: @user, except: removed_response_params() , status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end

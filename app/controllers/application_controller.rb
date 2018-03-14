@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
   # 2. Require authentication for all controller in our app
   before_action :require_login
+  Stripe.api_key = "sk_test_0gnxbjwyeFfHIXOOymaLh3cz"
 
   # 3. This will be used/called when we need authentication
   def require_login
