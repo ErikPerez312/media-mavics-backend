@@ -24,7 +24,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      create_stripe_customer(@user)
+
+      render json: @user, except: removed_response_params() , status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -50,6 +52,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def removed_response_params()
+      return [
+          :password_hash,
+          :password_salt,
+          :password
+      ]
+    end
+
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.permit(
@@ -59,5 +69,16 @@ class UsersController < ApplicationController
         :business_name,
         :password
       )
+    end
+
+    def create_stripe_customer(user)
+      @customer = Stripe::Customer.create(
+        :description => "Customer for #{user.email}",
+        :email => user.email
+      )
+
+      user.customer_id = @customer.id
+      user.save
+
     end
 end
