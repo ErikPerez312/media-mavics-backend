@@ -1,4 +1,5 @@
 class EphemeralKeysController < ApplicationController
+    skip_before_action :require_login, raise: false
     require('pp')
   # before_action :set_ephemeral_key, only: [:show, :update, :destroy]
 
@@ -11,7 +12,7 @@ class EphemeralKeysController < ApplicationController
       {customer: customer_id},
       {stripe_version: stripe_version}
     )
-    
+
     render json: @key, status: :created
   end
 
