@@ -21,6 +21,7 @@ class EphemeralKeysController < ApplicationController
     rescue Stripe::StripeError => e
         status 402
         return log_info("Error creating ephemeral key: #{e.message}")
+        render json: {"error": "Error creating ephemeral key: #{e.message}"}, status: => 402
     end
 
     render json: @key, status: :created
